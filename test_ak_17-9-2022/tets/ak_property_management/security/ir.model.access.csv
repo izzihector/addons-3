@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_property_size,property_size,model_property_size,,1,1,1,1
+access_property_facility,property_facility,model_property_facility,,1,1,1,1
+access_facility_category,facility_category,model_facility_category,,1,1,1,1
+access_facility_lines,facility_lines,model_facility_lines,,1,1,1,1
+access_property_maintanance,property_maintanance,model_property_maintanance,,1,1,1,1
+access_generators,property_generators,model_generators_monitoring,,1,1,1,1
+access_generator_line,generator_line,model_generator_line,,1,1,1,1
+access_ak_property_maintenance_report,ak.property.maintenance.report,model_ak_property_maintenance_report,,1,1,1,1
+

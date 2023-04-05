@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="Ak_property_maintenance_wizard" model="ir.ui.view">
+            <field name="name">AK property maintenance Ledger Wizard</field>
+            <field name="model">ak.property.maintenance.report</field>
+            <field name="arch" type="xml">
+                <form string="AK Property Maintenance">
+                    <sheet>
+                        <group>
+                            <field name="property_id"/>
+                        </group>
+                        <group col="4" colspan="4">
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                        </group>
+                        <footer>
+                            <button name="print_report" type="object" string="Print Property Maintenance Report" icon="fa-print" class="oe_highlight" default_focus="1"/>
+                            <button string="Cancel" special="cancel" icon="fa-times-circle"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="ak_property_maintenance_action" model="ir.actions.act_window">
+            <field name="name" >Ak Property Maintenance</field >
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ak.property.maintenance.report</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="ak_property_maintenance_menu"
+                  name=" AK Property Maintenance Report"
+                  parent="sr_property_rental_management.sr_property_reporting_menu"
+                  action="ak_property_maintenance_action"
+                  sequence="2" />
+    </data>
+</odoo>

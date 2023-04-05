@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <report
+                id="action_report_renter_card_pdf"
+                string="Renter Card"
+                model="sr.tenancy.agreement"
+                report_type="qweb-pdf"
+                file="ak_property_management.report_renter_card_template"
+                name="ak_property_management.report_renter_card_template"
+                print_report_name="'%s Renter Card' % (object.name)"
+        />
+        <template id="report_renter_card_template">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <t t-foreach="docs" t-as="doc">
+                        <div class="page">
+                            <h3 class="text-center">Renter Card</h3>
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-bordered" style="border:3px solid #dfbc61">
+                                        <theed>
+                                            <tr style="background-color:#dfbc61;">
+                                               <th style="border: 1px solid #dfbc61;">Renter Information</th>
+                                                <th style="border: 1px solid #dfbc61; margin-left:10px;"></th>
+                                             </tr>
+                                            <tr class="text-center" style="color:#191717;">
+                                                <th>Renter</th>
+                                                <th>
+                                                    <span t-field="doc.tenant_id.name"/>
+                                                </th>
+                                             </tr>
+                                             <tr class="text-center" style="color:#191717;">
+                                                <th>Property NO</th>
+                                                <th>
+                                                    <span t-field="doc.property_id.property_no"/>
+                                                </th>
+                                             </tr>
+                                            <tr class="text-center" style="color:#191717;">
+                                                <th>Start Date</th>
+                                                <th>
+                                                    <span t-field="doc.agreement_start_date"/>
+                                                </th>
+                                             </tr>
+                                            <tr class="text-center" style="color:#191717;">
+                                                <th>End Date</th>
+                                                <th>
+                                                    <span t-field="doc.agreement_expiry_date"/>
+                                                </th>
+                                            </tr>
+                                            <tr style="background-color:#dfbc61;">
+                                               <th style="border: 1px solid #dfbc61;">Internet Information</th>
+                                                <th style="border: 1px solid #dfbc61;"></th>
+                                            </tr>
+                                            <tr class="text-center" style="color:#191717;">
+                                                <th>Wifi</th>
+                                                <th>
+                                                    <span t-field="doc.property_id.wifi"/>
+                                                </th>
+                                            </tr>
+                                            <tr class="text-center" style="color:#191717;">
+                                                <th>Wifi Username</th>
+                                                <th>
+                                                    <span t-field="doc.property_id.wifi_username"/>
+                                                </th>
+                                            </tr>
+                                            <tr class="text-center" style="color:#191717;">
+                                                <th>Wifi Password</th>
+                                                <th>
+                                                    <span t-field="doc.property_id.wifi_password"/>
+                                                </th>
+                                            </tr>
+                                             <tr style="background-color:#dfbc61;">
+                                                <th style="border: 1px solid #dfbc61;">Electricity Information</th>
+                                                <th style="border: 1px solid #dfbc61;"></th>
+                                            </tr>
+                                            <tr class="text-center" style="color:#191717;">
+                                                <th>Meeter Number</th>
+                                                <th>
+                                                    <span t-field="doc.property_id.meter"/>
+                                                </th>
+                                            </tr>
+                                            <tr class="text-center" style="color:#191717;">
+                                                <th>Meeter Kw Open</th>
+                                                <th>
+                                                    <span t-field="doc.property_id.meter_kw_in_arriving"/><span style="margin-left:5px;">Kw</span>
+                                                </th>
+                                            </tr>
+                                            <tr class="text-center" style="color:#191717;">
+                                                <th>Meeter Kw Close</th>
+                                                <th>
+                                                    <span t-field="doc.property_id.meter_kw_in_departure"/><span style="margin-left:5px;">Kw</span>
+                                                </th>
+                                            </tr>
+                                        </theed>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

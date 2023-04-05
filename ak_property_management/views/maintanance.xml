@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hr_equipment_request_view_kanban_image" model="ir.ui.view">
+        <field name="name">property.maintananc.kanban</field>
+        <field name="model">property.maintanance</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="stage_id" sample="1">
+                <field name="stage_id"/>
+                <field name="state" invisible="1"/>
+                <field name="maintenance_for"/>
+                <field name="color"/>
+                <field name="priority"/>
+                <field name="equipment_id"/>
+                <field name="user_id"/>
+<!--                <field name="owner_user_id"/>-->
+                <field name="property_id"  attrs="{'readonly': [('state','=','invoice')], 'invisible':[('maintenance_for','=','g')]}"/>
+                <field name="generator_id" attrs="{'readonly': [('state','=','invoice')], 'invisible':[('maintenance_for','=','p')]}"/>
+                <field name="category_id"/>
+                <field name="kanban_state"/>
+                <field name="activity_ids" />
+                <field name="activity_state" />
+                <progressbar field="kanban_state" colors='{"done": "success", "blocked": "danger"}'/>
+                <templates>
+                    <t t-name="kanban-tooltip">
+                       <ul class="oe_kanban_tooltip">
+                          <li t-if="record.category_id.raw_value"><b>Category:</b> <t t-esc="record.category_id.value"/></li>
+                          <li t-if="record.user_id.raw_value"><b>Request to:</b> <t t-esc="record.user_id.value"/></li>
+                       </ul>
+                    </t>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="{{!selection_mode ? 'oe_kanban_color_' + kanban_getcolor(record.color.raw_value) : ''}} oe_kanban_card oe_kanban_global_click oe_semantic_html_override">
+                            <div class="o_dropdown_kanban dropdown">
+
+                                <a role="button" class="dropdown-toggle o-no-caret btn" data-toggle="dropdown" data-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
+                                    <span class="fa fa-ellipsis-v"/>
+                                </a>
+                                <div class="dropdown-menu" role="menu">
+                                    <t t-if="widget.editable"><a role="menuitem" type="edit" class="dropdown-item">Edit...</a></t>
+                                    <t t-if="widget.deletable"><a role="menuitem" type="delete" class="dropdown-item">Delete</a></t>
+                                    <ul class="oe_kanban_colorpicker" data-field="color"/>
+                                </div>
+                            </div>
+                            <div class="oe_kanban_content" tooltip="kanban-tooltip">
+                                <div class="o_kanban_record_top">
+                                    <b class="o_kanban_record_title"><field name="name"/></b>
+                                </div>
+                                <div class="o_kanban_record_body">
+                                    <span> <field name="maintenance_for"/><br/></span>
+                                    <span name="owner_user_id" t-if="record.owner_user_id.raw_value">Requested by : <field name="owner_user_id"/><br/></span>
+                                    <span class="oe_grey" t-if="record.equipment_id.raw_value"><field name="equipment_id"/><br/></span>
+                                    <span t-if="record.category_id.raw_value"><field name="category_id"/></span>
+                                </div>
+                                <div class="o_kanban_record_bottom">
+                                    <div class="oe_kanban_bottom_left">
+                                        <field name="priority" widget="priority"/>
+                                        <div class="o_kanban_inline_block ml4 mr4">
+                                            <field name="activity_ids" widget="kanban_activity" />
+                                        </div>
+                                    </div>
+                                    <div class="oe_kanban_bottom_right">
+                                        <field name="kanban_state" widget="state_selection"/>
+                                        <field name="user_id" widget="many2one_avatar_user"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="oe_clear"></div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+        <record model="ir.ui.view" id="property_maintanance_form">
+            <field name="name">property.maintanance.form</field>
+            <field name="model">property.maintanance</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button string="Cancel" name="archive_equipment_request" type="object" attrs="{'invisible': [('archive', '=', True)]}"/>
+                        <button string="Reopen Request" name="reset_equipment_request" type="object" attrs="{'invisible': [('archive', '=', False)]}"/>
+                        <button class="oe_highlight" type="object" name="create_maintanance_invoice" string="Create Invoice" icon="fa-pencil-square-o"  states='new' />
+                        <button name="button_cancel" string="Cancel Invoice" type="object" states="invoice"/>
+                        <button name="action_draft" states="cancel" type="object" string="Set to New"/>
+                        <field name="state" widget="statusbar" statusbar_visible="new,invoice"/>
+<!--                        <field name="stage_id" widget="statusbar" options="{'clickable': '1'}" attrs="{'invisible': [('archive', '=', True)]}"/>-->
+
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" name="action_view_invoice" type="object" icon="fa-pencil-square-o" attrs="{'invisible':[ ('invoice_count', '=', 0)]}" >
+                                <div class="o_field_widget o_stat_info">
+                                  <span class="o_stat_value">
+                                      <field name="invoice_count" widget="statinfo" nolabel="1" class="mr4"/>
+                                  </span>
+                                  <span class="o_stat_text">Invoices</span>
+                                </div>
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                             <field name="maintenance_for" />
+                            </group>
+                        </group>
+                        <div class="oe_title">
+                            <label for="name" string="Maintenance Name"/>
+                            <h1>
+                                <field name="name" placeholder="e.g. Cleaning" class="oe_inline" required="1" attrs="{'readonly': [('state','=','invoice')]}"/>
+                            </h1>
+                        </div>
+                        <group string="Maintenance Details">
+                            <group>
+                                <field name="generator_id" 
+                                       attrs="{'readonly': [('state','=','invoice')],
+                                               'invisible':[('maintenance_for','=','p')]}"
+                                       options="{'no_create': True, 'no_edit':True}"/>
+                                <field name="property_id" 
+                                       attrs="{'readonly': [('state','=','invoice')],
+                                               'invisible':[('maintenance_for','=','g')]}" 
+                                       options="{'no_create': True, 'no_edit':True}"/>
+                                       
+                                <label for="maintain_cost"/>
+                                <div name="cost_div" class="d-flex">
+                                    <field name="maintain_cost" attrs="{'readonly': [('state','=','invoice')]}"/>
+                                    <span class="oe_inline o_form_label mx-3 oe_read_only"> in </span>
+                                    <field name="currency_id_2" domain="['|', ('name', '=', 'USD'), ('name', '=', 'SDG') ]" />
+                                </div>
+                                <field name="responsible_id" attrs="{'readonly': [('state','=','invoice')]}" options="{'no_create': True, 'no_edit':True}"/>
+                            </group>
+                            <group>
+                                 <field name="operation" attrs="{'readonly': [('state','=','invoice')]}"/>
+                                 <field name="date_from" attrs="{'readonly': [('state','=','invoice')]}"/>
+                                 <field name="date_to" attrs="{'readonly': [('state','=','invoice')]}"/>
+                                 <field name="invoice_id" readonly="1"/>
+                                <field name="archive" invisible="1"/>
+                            </group>
+                            <group>
+                                 <field name="assign_to" attrs="{'readonly': [('state','=','invoice')]}"/>
+                                 <field name="renter_id" attrs="{'readonly': [('state','=','invoice')]}"/>
+                            </group>
+                            <group>
+                                <label for='description'/>
+                               <field name="description" placeholder="More Details Regarding the Maintenance." nolabel="1" attrs="{'readonly': [('state','=','invoice')]}"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    <record model="ir.ui.view" id="property_maintanance_tree">
+        <field name="name">property.maintanance.tree</field>
+        <field name="model">property.maintanance</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" string="Maintenance"/> 
+                <field name="date_from"/>
+                <field name="date_to"/>
+                <field name="property_id" attrs="{'invisible':[('maintenance_for','=','g')]}"/>
+                <field name="generator_id" attrs="{'invisible':[('maintenance_for','=','p')]}"/>
+                <field name="maintain_cost"/>
+                <field name="operation"/>
+                <field name="invoice_id"/>
+                <field name="maintenance_for" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_maintanance">
+        <field name="name">Maintenance</field>
+        <field name="res_model">property.maintanance</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Maintenance.
+            </p>
+        </field>
+    </record>
+      <menuitem id="maintenance_menu"
+                name="Maintenance"
+                action="action_maintanance"
+                parent="sr_property_rental_management.sr_property_management_root"
+                sequence="7"/>
+    </data>
+</odoo>

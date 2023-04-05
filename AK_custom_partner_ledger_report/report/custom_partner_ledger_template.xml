@@ -1,0 +1,76 @@
+<odoo>
+    <template id="Ak_partner_ledger_template">
+      <t t-call="web.html_container">
+                 <t t-call="web.external_layout">
+                        <div class="page">
+                        <div class="oe_structure"/>
+                        <h2>AK Statement</h2>
+                        <div class = "raw">
+                            <div class="col-2" style="display: inline-block;">
+                                <strong>Owner:</strong>
+                                <p t-esc="data['owner']"/>
+                            </div>
+                            <div class="col-2" style="display: inline-block;">
+                                <strong>Property:</strong>
+                                <p t-esc="data['property_id']"/>
+                            </div>
+                            <div class="col-2" style="display: inline-block;">
+                                <strong>Start Date:</strong>
+                                <p t-esc="data['start_date']"/>                         
+                            </div>
+                            <div class="col-2" style="display: inline-block;">
+                                <strong>End Date:</strong>
+                                <p t-esc="data['end_date']"/>  
+                            </div>
+                        </div>
+                        
+
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align: left;">DATE</th>
+                                        <!-- <th style="text-align: left;">JOURNAL</th> -->
+                                        <th style="text-align: left;">JOURNAL ENTRY</th>
+                                        <!-- <th style="text-align: left;">ACCOUNT </th> -->
+                                        <!-- <th style="text-align: left;">PARTNER</th> -->
+                                        <th style="text-align: left;">LABLE</th>
+                                        <th style="text-align: left;">NOTE</th>
+                                        <th style="text-align: left;">DEBIT</th>
+                                        <th style="text-align: left;">CREDIT</th>
+                                        <th style="text-align: left;">BALANCE</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <!-- <td></td> -->
+                                        <!-- <td></td> -->
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><strong><span t-esc="dcb['total_debit']"></span></strong></td>
+                                        <td><strong><span t-esc="dcb['total_credit']"></span></strong></td>
+                                        <td><strong><span t-esc="dcb['balance']"></span></strong></td>
+                                    </tr>
+                                    <t t-foreach="record" t-as="rec">
+                                        <tr>
+                                            <td><span t-esc="rec['date']"></span></td>
+                                            <!-- <td><span t-esc="rec['journal_id']"></span></td> -->
+                                            <td><span t-esc="rec['move_id']"></span></td>
+                                            <!-- <td><span t-esc="rec['account_id']"></span></td> -->
+                                            <td><span t-esc="rec['name']"></span></td>
+                                            <td><span t-esc="rec['ref']"></span></td>
+                                            <td><span t-esc="rec['debit']"></span></td>
+                                            <td><span t-esc="rec['credit']"></span></td>
+                                            <td><span t-esc="rec['balance']"></span></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                    </div>
+                 </t>
+             </t>
+         </template>
+</odoo>
+
+

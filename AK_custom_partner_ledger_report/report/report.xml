@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <report
+            id="ak_custom_partner_ledger_report"
+            model="account.move.line"
+            string="AK Owner Statement"
+            report_type="qweb-pdf"
+            name="AK_custom_partner_ledger_report.Ak_partner_ledger_template"
+            file="AK_custom_partner_ledger_report.Ak_partner_ledger_template"
+        />
+    </data>
+</odoo>

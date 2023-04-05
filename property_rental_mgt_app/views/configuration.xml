@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+<!--        <record model="ir.ui.view" id="property_names_form">-->
+<!--            <field name="name">property.names.form</field>-->
+<!--            <field name="model">property.names</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <form>-->
+<!--                    <sheet>-->
+<!--                        <div class="oe_title">-->
+<!--                            <h1>-->
+<!--                                <field name="name" placeholder="Property" class="oe_inline" required="1"/>-->
+<!--                            </h1>-->
+<!--                        </div>-->
+<!--                    </sheet>-->
+<!--                </form>-->
+<!--            </field>-->
+<!--        </record>-->
+
+<!--        <record model="ir.ui.view" id="property_names_tree">-->
+<!--            <field name="name">property.names.tree</field>-->
+<!--            <field name="model">property.names</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <tree>-->
+<!--                    <field name="name"/>-->
+<!--                </tree>-->
+<!--            </field>-->
+<!--        </record>-->
+<!--        <record model="ir.actions.act_window" id="action_property_names">-->
+<!--            <field name="name">Property</field>-->
+<!--            <field name="res_model">property.names</field>-->
+<!--            <field name="binding_view_types">form</field>-->
+<!--            <field name="view_mode">tree,form</field>-->
+<!--            <field name="help" type="html">-->
+<!--                <p class="o_view_nocontent_smiling_face">-->
+<!--                    Create a new Property.-->
+<!--                </p>-->
+<!--            </field>-->
+<!--        </record>-->
+        <!-- Diesel Pricing View ##########################################################-->
+        <record model="ir.ui.view" id="diesel_pricing_form">
+            <field name="name">diesel.pricing.form</field>
+            <field name="model">diesel.pricing</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group col="4" colspan="4">
+                                <field name="name"/>
+                                <field name="price"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="diesel_pricing_tree">
+            <field name="name">diesel.pricing.tree</field>
+            <field name="model">diesel.pricing</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                     <field name="price"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_diesel_pricing">
+            <field name="name">Diesel Pricing</field>
+            <field name="res_model">diesel.pricing</field>
+            <field name="binding_view_types">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new Pricing Of Diesel.
+                </p>
+            </field>
+        </record>
+        <!--###########################################################################-->
+         <record model="ir.ui.view" id="facility_category_form">
+            <field name="name">facility.category.form</field>
+            <field name="model">facility.category</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" placeholder="Category Of Facility" class="oe_inline" required="1"/>
+                            </h1>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="facility_category_tree">
+            <field name="name">facility.category.tree</field>
+            <field name="model">facility.category</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_facility_category">
+            <field name="name">Category Of Facility</field>
+            <field name="res_model">facility.category</field>
+            <field name="binding_view_types">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new Category Of Facility.
+                </p>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="property_facility_form">
+            <field name="name">property.facility.form</field>
+            <field name="model">property.facility</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group colspan="4" col="4">
+                            <field name="name" placeholder="e.g. Swimming Pool" required="1"/>
+                            <field name="categ_id"/>
+                            <!--<field name="flour"/>-->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="property_facility_tree">
+            <field name="name">property.facility.tree</field>
+            <field name="model">property.facility</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="categ_id"/>
+                   <!-- <field name="flour"/>-->
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="property_facility_kanban">
+            <field name="name">property.facility.kanban</field>
+            <field name="model">property.facility</field>
+            <field name="arch" type="xml">
+                <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title">
+                                    <field name="name"/>
+                                </strong>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_property_facility">
+        <field name="name">Property Facility</field>
+        <field name="res_model">property.facility</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Facility.
+            </p>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="property_facility_kanban">
+            <field name="name">property.facility.kanban</field>
+            <field name="model">property.facility</field>
+            <field name="arch" type="xml">
+                <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title">
+                                    <field name="name"/>
+                                </strong>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_property_facility">
+        <field name="name">Property Facility</field>
+        <field name="res_model">property.facility</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new facility.
+            </p>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="property_type_form">
+        <field name="name">property.type.form</field>
+        <field name="model">property.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                <div class="oe_title">
+                    <label for="name" string="Property Type"/>
+                    <h1>
+                        <field name="name" placeholder="e.g. Commercial" class="oe_inline" required="1"/>
+                    </h1>
+                </div>
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_property_type">
+        <field name="name">Property Type</field>
+        <field name="res_model">property.type</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new property type.
+            </p>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="rent_contract_form">
+        <field name="name">contract.contract.form</field>
+        <field name="model">contract.contract</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                <div class="oe_title">
+                    <label for="name" string="Contract Name"/>
+                    <h1>
+                        <field name="name" placeholder="e.g. Contract for 1 month" class="oe_inline" required="1"/>
+                    </h1>
+                    <group>
+                        <field name="contract_type" required="1"/>
+                        <field name="month" attrs="{'required': [('contract_type', '=','monthly')],'invisible': [('contract_type', '=', 'yearly')]}"/>
+                        <field name="year" attrs="{'required': [('contract_type', '=','yearly')],'invisible': [('contract_type', '=', 'monthly')]}"/>
+                    </group>
+                </div>
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_rent_contract">
+        <field name="name">Contract</field>
+        <field name="res_model">contract.contract</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new contract.
+            </p>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="property_payment_form">
+        <field name="name">partial.payment.form</field>
+        <field name="model">partial.payment</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group string="Partial Payment">
+                        <group>
+                        <field name="name" placeholder="Payment" required="1"/>
+                        <field name="number_of_pay" class="oe_inline"/>
+                        </group>
+                    </group>
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="property_payment_tree">
+        <field name="name">partial.payment.tree</field>
+        <field name="model">partial.payment</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="number_of_pay"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_partial_payment">
+        <field name="name">Property Partial Payment</field>
+        <field name="res_model">partial.payment</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new partial payment.
+            </p>
+        </field>
+    </record>
+
+
+    <!--Property Price Of Size-->
+         <record model="ir.ui.view" id="property_size_form">
+        <field name="name">property.size.form</field>
+        <field name="model">property.size</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                <div class="oe_title">
+                    <h1>
+                        <field name="name" placeholder="Per Meter" class="oe_inline" required="1"/>
+                    </h1>
+                </div>
+                    <group>
+                        <field name="price" required="1"/>
+                    </group>
+
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_property_size">
+        <field name="name">Property Size Price</field>
+        <field name="res_model">property.size</field>
+<!--        <field name="binding_view_types">form</field>-->
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Property Size Price.
+            </p>
+        </field>
+    </record>
+
+            <!-- equipment.stage : views -->
+<!--    <record id="hr_equipment_stage_view_search" model="ir.ui.view">-->
+<!--        <field name="name">equipment.stage.search</field>-->
+<!--        <field name="model">maintenance.stage</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <search string="Maintenance Request Stages">-->
+<!--               <field name="name" string="Maintenance Request Stages"/>-->
+<!--            </search>-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--    <record id="hr_equipment_stage_view_tree" model="ir.ui.view">-->
+<!--        <field name="name">equipment.stage.tree</field>-->
+<!--        <field name="model">maintenance.stage</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <tree string="Maintenance Request Stage" editable="top">-->
+<!--                <field name="sequence" widget="handle"/>-->
+<!--                <field name="name"/>-->
+<!--                <field name="fold"/>-->
+<!--                <field name="done"/>-->
+<!--            </tree>-->
+<!--        </field>-->
+<!--    </record>-->
+<!--    <record id="hr_equipment_stage_view_kanban" model="ir.ui.view">-->
+<!--        <field name="name">equipment.stage.kanban</field>-->
+<!--        <field name="model">maintenance.stage</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <kanban class="o_kanban_mobile">-->
+<!--                <templates>-->
+<!--                    <t t-name="kanban-box">-->
+<!--                        <div t-attf-class="oe_kanban_global_click">-->
+<!--                            <div>-->
+<!--                                <strong><field name="name"/></strong>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </t>-->
+<!--                </templates>-->
+<!--            </kanban>-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--    <record id="hr_equipment_stage_action" model="ir.actions.act_window">-->
+<!--        <field name="name">Stages</field>-->
+<!--        <field name="res_model">maintenance.stage</field>-->
+<!--        <field name="view_mode">tree,kanban,form</field>-->
+<!--        <field name="help" type="html">-->
+<!--          <p class="o_view_nocontent_smiling_face">-->
+<!--            Add a new stage in the maintenance request-->
+<!--          </p>-->
+<!--        </field>-->
+<!--    </record>-->
+    </data>
+</odoo>

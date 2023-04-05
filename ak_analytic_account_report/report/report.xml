@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <report
+            id="custom_analytic_account_report"
+            model="account.analytic.line"
+            string="Analytic Account Report"
+            report_type="qweb-pdf"
+            name="ak_analytic_account_report.analytic_account_report_template"
+            file="ak_analytic_account_report.analytic_account_report_template"
+        />
+    </data>
+</odoo>

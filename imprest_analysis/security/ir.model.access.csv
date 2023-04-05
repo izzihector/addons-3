@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_imprest_analysis_user,imprest_analysis.user,model_imprest_analysis,base.group_user,1,0,0,0
+access_imprest_analysis_accountant,imprest_analysis.accountant,model_imprest_analysis,account.group_account_user,1,1,1,1
+access_imprest_analysis_imprest_user,imprest_analysis.imprest.user,model_imprest_analysis,imprest_analysis.group_imprest_user,1,1,1,1
+access_imprest_analysis_imprest_manager,imprest_analysis.imprest.manager,model_imprest_analysis,imprest_analysis.group_imprest_manager,1,1,1,1
+access_imprest_analysis_line_user,imprest_analysis.line.user,model_imprest_analysis_line,base.group_user,1,0,0,0
+access_imprest_analysis_line_accountant,imprest_analysis.line.accountant,model_imprest_analysis_line,account.group_account_user,1,1,1,1
+access_imprest_analysis_line_imprest_user,imprest_analysis.imprest.line.user,model_imprest_analysis_line,imprest_analysis.group_imprest_user,1,1,1,1
+access_imprest_analysis_line_imprest_manager,imprest_analysis.imprest.line.manager,model_imprest_analysis_line,imprest_analysis.group_imprest_manager,1,1,1,1

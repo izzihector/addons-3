@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- model.name inherit form view -->
+        <record id="account_account_view_inherit" model="ir.ui.view">
+            <field name="name">account.account.inherit.view.tree</field>
+            <field name="model">account.account</field>
+            <field name="inherit_id" ref="account.view_account_list"/>
+            <field name="arch" type="xml">
+                
+                <xpath expr="//field[@name='reconcile']" position="after">
+                    <field name="use_for_discount" />
+                </xpath>
+                
+            </field>
+        </record>
+       
+        
+    </data>
+</odoo>

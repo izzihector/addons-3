@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- model.name inherit form view -->
+        <record id="account_account_view_inherit" model="ir.ui.view">
+            <field name="name">account.account.inherit.view.tree</field>
+            <field name="model">account.account</field>
+            <field name="inherit_id" ref="account.view_account_list"/>
+            <field name="arch" type="xml">
+                
+                <xpath expr="//field[@name='reconcile']" position="after">
+                    <field name="use_for_discount" />
+                </xpath>
+                
+            </field>
+        </record>
+       
+        <template id="invoice_report_inherit" inherit_id="account.report_invoice_document">
+            <xpath expr="//table[@name='invoice_line_table']//thead//tr//th[5]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <report id="facility_services_report_as_pdf"
+                model="sr.tenancy.agreement"
+                string="Checklist"
+                report_type="qweb-pdf"
+                name="ak_property_management.facility_services_template"/>
+                
+        <template id="facility_services_template">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <t t-foreach="docs" t-as="doc">
+                        <div class="page">
+                            <h3 class="text-center">Checklist</h3>
+                            <table class="table table-bordered" style="border:3px solid #dfbc61">
+                                <theed>
+                                    <tr style="background-color:#dfbc61;">
+                                        <th>Tenent Name: </th>
+                                        <th>Contract Start:</th>
+                                        <th>Contract End:</th>
+                                    </tr>
+                                </theed>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <span t-field="doc.tenant_id.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="doc.agreement_start_date"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="doc.agreement_expiry_date"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-bordered" style="border:3px solid #dfbc61">
+                                        <theed>
+                                            <tr style="background-color:#dfbc61;">
+                                                <th>Equipment</th>
+                                                <th>Category</th>
+                                                <th>State</th>
+                                                <th>Count</th>
+                                            </tr>
+                                        </theed>
+                                        <tbody>
+                                            <t t-foreach="doc.facility_ids" t-as="l">
+                                                <tr style="background-color:#fff;">
+                                                    <t t-if="l.is_exist == 1">
+                                                        <td>
+                                                            <span t-field="l.facility_id.name"/>
+                                                        </td>
+                                                        <td>
+                                                            <span t-field="l.categ_id"/>
+                                                        </td>
+                                                        <td>
+                                                            <img class="img" src="/property_rental_mgt_app/static/description/true1.png" style="width:20px;"/>
+                                                        </td>
+                                                        <td>
+                                                            <span t-field="l.count"/>
+                                                        </td>
+                                                    </t>
+                                                    <t t-if="l.is_exist == 0">
+                                                        <td>
+                                                            <span t-field="l.facility_id.name"/>
+                                                        </td>
+                                                        <td>
+                                                            <span t-field="l.categ_id"/>
+                                                        </td>
+                                                        <td>
+                                                            <img class="img" src="/property_rental_mgt_app/static/description/false.png" style="width:20px;"/>
+                                                        </td>
+                                                        <td>
+                                                            <span t-field="l.count"/>
+                                                        </td>
+                                                    </t>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>
+                                </div>
+<!--                                <div class="col">-->
+<!--                                    <table class="table table-bordered">-->
+<!--                                        <theed>-->
+<!--                                            <tr>-->
+<!--                                                <th style="background-color:#795548;">Equipment</th>-->
+<!--                                                <th style="background-color:#795548;">State</th>-->
+<!--                                                <th style="background-color:#795548;">Count</th>-->
+<!--                                            </tr>-->
+<!--                                        </theed>-->
+<!--                                        <tbody>-->
+<!--                                            <t t-foreach="doc.facility_ids" t-as="l">-->
+<!--                                                <tr>-->
+<!--                                                    <t t-if="l.is_exist == 1">-->
+<!--                                                        <td>-->
+<!--                                                            <span t-field="l.facility_id.name"/>-->
+<!--                                                        </td>-->
+<!--                                                        <td>-->
+<!--                                                            <img class="img" src="/property_rental_mgt_app/static/description/true1.png" style="width:20px;"/>-->
+<!--                                                        </td>-->
+<!--                                                        <td>-->
+<!--                                                            <span t-field="l.count"/>-->
+<!--                                                        </td>-->
+<!--                                                    </t>-->
+<!--                                                    <t t-if="l.is_exist == 0">-->
+<!--                                                        <td>-->
+<!--                                                            <span t-field="l.facility_id.name"/>-->
+<!--                                                        </td>-->
+<!--                                                        <td>-->
+<!--                                                            <img class="img" src="/property_rental_mgt_app/static/description/false.png" style="width:20px;"/>-->
+<!--                                                        </td>-->
+<!--                                                        <td>-->
+<!--                                                            <span t-field="l.count"/>-->
+<!--                                                        </td>-->
+<!--                                                    </t>-->
+<!--                                                </tr>-->
+<!--                                            </t>-->
+<!--                                        </tbody>-->
+<!--                                    </table>-->
+<!--                                </div>-->
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="Ak_service_fees_wizard" model="ir.ui.view">
+            <field name="name">AK Service Fees Wizard</field>
+            <field name="model">ak.service.fees.wizard</field>
+            <field name="arch" type="xml">
+                <form string="AK Service Fees">
+                    <sheet>
+                        <group col="4" colspan="4">
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                        </group>
+                        <footer>
+                            <button name="print_report" type="object" string="Print Service Fees Report" icon="fa-print" class="oe_highlight" default_focus="1"/>
+                            <button string="Cancel" special="cancel" icon="fa-times-circle"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="ak_service_fees_action" model="ir.actions.act_window">
+            <field name="name" >Ak Service Fees Wizard</field >
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ak.service.fees.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="ak_service_fees_menu"
+                  name=" AK Service Fees"
+                  parent="accounting_pdf_reports.menu_finance_partner_reports"
+                  action="ak_service_fees_action"
+                  sequence="0" />
+    </data>
+</odoo>

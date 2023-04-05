@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <template id="hr_contract_extender_common" name="hr_contract_extender pdf assets" inherit_id="web.report_assets_common">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" type="text/css"
+                      href="/property/static/src/css/custom.css"/>
+            </xpath>
+        </template>
+        <template id="contract_report_assets_pdf" inherit_id="web.report_assets_pdf">
+        <xpath expr="link[last()]" position="after">
+            <link rel="stylesheet" type="text/css" href="/property/static/src/css/custom.css"/>
+        </xpath>
+    </template>
+    </data>
+</odoo>

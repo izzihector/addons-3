@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record id="view_move_form_extends_to_add_property_information"
+		model="ir.ui.view">
+		<field name="name">view.move.form.extends.to.add.property.information
+		</field>
+		<field name="model">account.move</field>
+		<field name="inherit_id" ref="account.view_move_form" />
+		<field name="arch" type="xml">
+			<field name="payment_reference" position="after">
+				<field name="payment_term" invisible="1"/>
+				<field name="duration" invisible="1"/>
+				<field name="is_property_invoice"  invisible="1"/>
+				<field name="property_id"/> 
+				<field name="tenancy_agreement" attrs="{'invisible': [('is_property_invoice', '=', False)], 'required':[('is_property_invoice','=', True)]}"  />
+				<field name="owner_id"/>
+				<field name="ak_invoice_type" invisible="1"/>
+				<!-- <field name="property_id"/> -->
+				<!-- <field name="tenant_id" attrs="{'required':[('is_property_invoice','=', True)]}"  /> -->
+				<field name="is_property_commission_bill" invisible="1"/>
+			</field>
+			<xpath expr="//notebook/page[@id='invoice_tab']/field[@name='invoice_line_ids']/tree/field[@name='product_id']" position="before">
+				<field name="tenancy_agreement" invisible="1"/>
+			</xpath>
+			<xpath expr="//notebook/page[@id='aml_tab']/field[@name='line_ids']/tree/field[@name='account_id']" position="before">
+				<field name="tenancy_agreement" invisible="1"/>
+			</xpath>
+		</field>
+	</record>
+
+	<record id="view_analytic_account_line_inherit" model="ir.ui.view">
+		<field name="name">Analytic Account Line Inherited </field>
+		<field name="model">account.analytic.line</field>
+		<field name="inherit_id" ref="analytic.view_account_analytic_line_tree" />
+		<field name="arch" type="xml">
+
+			<field name="date" position="after">
+				<field name = "owner_id" />
+			</field>
+			
+		</field>
+	</record>
+
+
+	
+
+
+</odoo>

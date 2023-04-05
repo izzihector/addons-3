@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="Ak_partner_ledger_wizard" model="ir.ui.view">
+            <field name="name">AK Partner Ledger Wizard</field>
+            <field name="model">ak.partner.ledger.wizard</field>
+            <field name="arch" type="xml">
+                <form string="AK Partner Ledger">
+                    <sheet>
+                        <group>
+                            <field name="property_id"/>
+                        </group>
+                        <group col="4" colspan="4">
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                        </group>
+                        <footer>
+                            <button name="print_report" type="object" string="Print Partner Ledger" icon="fa-print" class="oe_highlight" default_focus="1"/>
+                            <button string="Cancel" special="cancel" icon="fa-times-circle"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="ak_partner_ledger_action" model="ir.actions.act_window">
+            <field name="name" >Ak Partner Ledger Wizard</field >
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ak.partner.ledger.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="ak_specific_account_partner_ledger_menu"
+                  name=" AK Owner Statement"
+                  parent="accounting_pdf_reports.menu_finance_partner_reports"
+                  action="ak_partner_ledger_action"
+                  sequence="1" />
+    </data>
+</odoo>

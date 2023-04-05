@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="account_move_inh_view" model="ir.ui.view">
+            <field name="name">account.move.inherit.view.form</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/notebook/page/field[@name='invoice_line_ids']/tree/field[@name='price_unit']" position="after">
+                     <field name="warranty"/>
+                </xpath> 
+            </field>
+        </record>
+        
+    </data>
+</odoo>

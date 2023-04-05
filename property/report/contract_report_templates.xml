@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_contract_document">
+        <t t-set="doc" t-value="doc.with_context(lang=res_company.partner_id.lang)"/>
+        <t t-call="web.basic_layout">
+            <t t-set="direction" t-value="((user.lang=='en_US' and 'ltr') or 'rtl')"/>
+            <div class="page contract-font" t-attf-style="direction:#{direction};">
+                <div class="oe_structure"/>
+                <div t-raw="doc.template_content"/>
+                <div class="oe_structure"/>
+            </div>
+        </t>
+    </template>
+
+    <template id="report_hr_contract">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="property.report_contract_document" t-lang="res_company.partner_id.lang"/>
+            </t>
+        </t>
+    </template>
+</odoo>

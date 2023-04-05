@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="generators_view_tree" model="ir.ui.view">
+            <field name="name">generators.monitoring</field>
+            <field name="model">generators.monitoring</field>
+            <field name="arch" type="xml">
+                <tree string="Generators Monitoring">
+                    <field name="name"/>
+                    <field name="serial_number"/>
+                    <field name="tank_capacity"/>
+                </tree>
+            </field>
+        </record>
+        <record id="generators_view_form" model="ir.ui.view">
+            <field name="name">generators.monitoring</field>
+            <field name="model">generators.monitoring</field>
+            <field name="arch" type="xml">
+                <form string="Generators Monitoring">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" name="action_view_maintenance" type="object" icon="fa-gears" help="#Maintanance of Property" attrs="{'invisible':[ ('maintain_count', '=', 0)]}">
+                                <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_value">
+                                        <field name="maintain_count" widget="statinfo" nolabel="1" class="mr4"/>
+                                    </span>
+                                    <span class="o_stat_text">Maintenance</span>
+                                </div>
+                            </button>
+                        </div>
+                        <label for="name" string="Generator"/>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group colspan="4" col="4">
+                            <field name="serial_number"/>
+                            <field name="manufacturing_date"/>
+                            <field name="tank_capacity"/>
+                        </group>
+                        <group string="Consuming Foul For Generator"></group>
+                        <field name="generator_ids">
+                            <tree editable="bottom">
+                                <field name="start_date"/>
+                                <field name="capacity_when_start"/>
+                                <field name="pause_date"/>
+                                <field name="capacity_when_stop"/>
+                                <field name="consuming"/>
+                                <field name="cost" widget='monetary' options="{'currency_field': 'currency_id'}" readonly="False"/>
+                                <field name="currency_id" invisible="1"/>
+                            </tree>
+                        </field>
+                        <group name="note_group" col="6" class="mt-2 mt-md-0">
+                            <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                    <label for="amount_total" />
+                                </div>
+                                <field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                            </group>
+                            <div class="oe_clear"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="generators_view_graph">
+            <field name="name">generators.monitoring</field>
+            <field name="model">generators.monitoring</field>
+            <field name="arch" type="xml">
+                <graph string="Generators Consuming" type="pie">
+                    <field name="name"/>
+                    <field name="amount_total"/>
+                </graph>
+            </field>
+        </record>
+        <record id="generators_monitoring_action" model="ir.actions.act_window">
+            <field name="name">Generators Monitoring</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">generators.monitoring</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+      <menuitem id="generator_menu"
+                name="Generator"
+                action="generators_monitoring_action"
+                parent="sr_property_rental_management.sr_property_management_root"
+                sequence="8"/>
+    </data>
+</odoo>

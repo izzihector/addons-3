@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <template id="report_hr_contract_appendix">
+            <xpath expr="." position="inside">
+                <link rel="preconnect" href="https://fonts.gstatic.com" />
+                <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300&amp;display=swap" rel="stylesheet" />
+            </xpath>
+            <!-- <style>
+             @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300&amp;display=swap');
+            </style> -->
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="page" style="font-family:Cairo;">
+                            <div class="row text-center">
+                                <table class="table table-borderd">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" style="overflow:hidden;border-left: 1px  solid #000;">
+                                                <img class="img" src="/property/static/src/img/new-logo.png" style="width:70%;" />
+                                            </th>
+                                            <th scope="col" style="border-left: 1px  solid #000; border-right: 1px  solid #000;">
+                                                <h3>Residential Lease Agreement</h3>
+                                                <p>Furnished Unit</p>
+                                            </th>
+                                            <th scope="col" style="border-right: 1px  solid #000;">
+                                                <h3>عقد ايجار سكني</h3>
+                                                <p> وحدة مفروشة</p>
+                                            </th>
+                                            <!-- <th scope="col">
+                                            </th> -->
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="row text-center" style="background-color:#c99b38; margin-top:70px; color:#fff;">
+                                <h4>LEGAL DEPARTMENT – LEGAL DOCUMENT Ref No. <span t-field="doc.name"></span></h4>
+                            </div>
+                            <div class="box" style="border:1px solid #000; width:100%; hieght:400px;overflow:hidden;margin-top:200px;">
+                                 <img class="img" src="/property/static/src/img/new-logo.png" style="width:100%;" />
+                            </div>
+                            <div class="row text-center" style="margin-top:500px;"><!--Header 2 row-->
+                                 <table class="table table-borderd">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" style="overflow:hidden;border-left: 1px  solid #000;">
+                                                <img class="img" src="/property/static/src/img/new-logo.png" style="width:70%;" />
+                                            </th>
+                                            <th scope="col" style="border-left: 1px  solid #000; border-right: 1px  solid #000;">
+                                                <h3>Residential Lease Agreement</h3>
+                                                <p>Furnished Unit</p>
+                                            </th>
+                                            <th scope="col" style="border-right: 1px  solid #000;">
+                                                <h3>عقد ايجار سكني</h3>
+                                                <p> وحدة مفروشة</p>
+                                            </th>
+                                            <!-- <th scope="col">
+                                            </th> -->
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="row text-center" style="margin-top:50px;">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <td style="padding:0;background-color:#c99b38;">
+                                                <p>Date</p>
+                                                <p>التاريخ</p>
+                                            </td>
+                                            <td style="padding:0;"><span t-field="doc.date"></span></td>
+                                            <td style="padding:0;background-color:#c99b38;">
+                                                <p>Contract Number</p>
+                                                <p>رقم عقد الإيجار</p>
+                                            </td>
+                                            <td style="padding:0;"><span t-field="doc.name"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding:0;background-color:#c99b38;">
+                                                <p>Landlord</p>
+                                                <p>المؤجر</p>
+                                            </td>
+                                            <td style="padding:0;"><span t-field="doc.owner_id"></span></td>
+                                             <td style="padding:0;background-color:#c99b38;">
+                                                <p>Tenant</p>
+                                                <p>المستأجر</p>
+                                            </td>
+                                            <td style="padding:0;"><span t-field="doc.partner_id"></span></td>
+                                        </tr>
+
+                                        <tr>
+                                        <td style="padding:0;background-color:#c99b38;">
+                                                <p>Tenancy Commencement Date</p>
+                                                <p>تاريخ بدء عقد الإيجار</p>
+                                            </td>
+                                            <td style="padding:0;"><span t-field="doc.from_date"></span></td>
+                                            <td style="padding:0;background-color:#c99b38;">
+                                                <p>Tenancy Expiry Date</p>
+                                                <p>تاريخ إنتهاء عقد الإيجار</p>
+                                            </td>
+                                            <td style="padding:0;"><span t-field="doc.to_date"></span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td style="padding:0;background-color:#c99b38;">
+                                                <p>Duration Contract</p>
+                                                <p>مدة عقد الإيجار</p>
+                                            </td>
+                                            <td style="padding:0;"><span t-field="doc.contract_month"></span></td>
+                                            <td style="padding:0;background-color:#c99b38;">
+                                                <p>Security Deposit</p>
+                                                <p>مبلغ التأمين</p>
+                                            </td>
+                                            <td style="padding:0;"><span t-field="doc.warranty"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding:0;background-color:#c99b38;">
+                                                <p>Rent Amount</p>
+                                                <p>قيمة الإيجار</p>
+                                            </td>
+                                            <td style="padding:0;"><span t-field="doc.deposite"></span></td>
+                                            <td style="padding:0;background-color:#c99b38;">
+                                                <p>Terms of Payment</p>
+                                                <p>شروط الدفع</p>
+                                            </td>
+                                            <td style="padding:0;"><span>1 Months in advance Payment</span></td>
+                                        </tr>
+                                        <!-- <tr>
+                                            <td style="padding:0;background-color:#c99b38;">
+                                                <p>Permitted Use</p>
+                                                <p>الإستخدام المسموح به</p>
+                                            </td>
+                                            <td style="padding:0;"><span>Solely for residency.</span></td>
+                                        </tr> -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                   <table class="table table-borderd">
+                                    <tr>
+                                        <td>
+                                            <p class="lead">
+                                                <strong>AKC Management</strong> means AKC’s Management body acting as the Landlord. 
+                                                <strong>Tenancy Agreement</strong> means the legally binding Tenancy Contract entered into by the Landlord and the Tenant outlining the terms of the Tenancy Contract.  
+                                                <strong>Diesel Expenditure Reports</strong> means the monthly report created by AKC Management outlining Diesel Expenditure. 
+                                                <strong>Inventory List</strong> means a detailed list which records the fixtures and contents of the rental Property at the beginning of the Tenancy Term. 
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <p class="lead" style="text-align: right;">
+                                                تعريفات
+                                                AKC Management تعني هيئة إدارة AKC التي تعمل بصفتها المالك.
+                                                اتفاقية الإيجار تعني عقد الإيجار الملزم قانونًا الذي يبرمه المالك والمستأجر والذي يحدد شروط عقد الإيجار.
+                                                تشير تقارير نفقات الديزل إلى التقرير الشهري الذي تم إنشاؤه بواسطة إدارة AKC والذي يحدد نفقات الديزل.
+                                                قائمة الجرد تعني قائمة مفصلة تسجل تركيبات ومحتويات العقار المؤجر في بداية مدة الإيجار.
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="row text-center" style="margin-top:500px;"><!--Header 2 row-->
+                                 <table class="table table-borderd">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" style="overflow:hidden;border-left: 1px  solid #000;">
+                                                <img class="img" src="/property/static/src/img/new-logo.png" style="width:70%;" />
+                                            </th>
+                                            <th scope="col" style="border-left: 1px  solid #000; border-right: 1px  solid #000;">
+                                                <h3>Residential Lease Agreement</h3>
+                                                <p>Furnished Unit</p>
+                                            </th>
+                                            <th scope="col" style="border-right: 1px  solid #000;">
+                                                <h3>عقد ايجار سكني</h3>
+                                                <p> وحدة مفروشة</p>
+                                            </th>
+                                            <!-- <th scope="col">
+                                            </th> -->
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <table class="table table-bordered">
+                                <!-- <style>
+                                    p{
+                                        font-size:16px;
+                                    }
+                                </style> -->
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"><h4>TERMS AND CONDITIONS</h4></th>
+                                            <th scope="col" style="text-align: right;">الشروط والأحكام</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            <tr>
+                                                <td>
+                                                    <p class="lead">
+                                                        <strong>(A)</strong> The Landlord agrees to lease the Property to the Tenant subject to the terms of this Residential Lease Agreement and the Community Rules and Regulation (together, the “Contract”). The Community Rules and Regulations are available upon request and may be amended from time to time by the AKC Management at its sole discretion.
+                                                    </p>
+                                                    <p class="lead">
+                                                        <strong>(B)</strong> All detailed terms are defined in the above table form an integral part of this Contract.
+                                                    </p>
+                                                    <p class="lead">
+                                                        <strong>(C)</strong> The Landlord and the Tenant hereby confirm their full legal competence to agree on the following terms of this Contract.
+                                                    </p>
+                                                </td>
+                                                <td>
+                                                    <p class="lead" style="text-align: right;">    
+                                                        <strong>(أ)</strong> يوافق المؤجرعلى تأجير العقار للمستأجر مع مراعاة شروط عقد الإيجار السكني هذا وقواعد ولوائح المجمع(معًا، "العقد").تتوفر قواعد ولوائح المجمع للمستأجر عند الطلب، ويمكن تعديلها من حين لآخرمن جانب المؤجر بحسب تقديرالمؤجر الخاص.
+                                                    </p>
+                                                     <p class="lead" style="text-align: right;">    
+                                                        <strong>(ب)</strong> تشكل جميع الشروط المحددة/المفصلة في الجدول أعلاه جزءًا لا يتجزأ من هذا العقد.
+                                                    </p>
+                                                     <p class="lead" style="text-align: right;">    
+                                                        <strong>(ت)</strong> يؤكد المؤجر والمستأجر أنهما يملكان الأهلية القانونية الكاملة والصفة الاعتبارية كي يتفقا على المواد التالية ويتعهدا بالتقيد بها.
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                            <tr class="text-center" style="background-color:#c99b38;font-style:bold;">
+                                                <td>
+                                                    <p>ARTICLE 1</p>
+                                                </td>
+                                                <td>
+                                                    <p>المادة 1</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p class="lead"><strong>1.1</strong> The Tenant shall pay the Rent and the Security Deposit before the Tenancy Commencement Date. Once all payments are cleared, and provided the Tenant is not in breach of any obligations under the Contract, the Tenant is then entitled to take and retain possession until the Tenancy Expiry Date.</p>
+                                                </td>
+                                                <td>
+                                                    <p class="lead" style="text-align: right;direction:rtl;"><strong>1.1</strong> يلتزم المستأجر بدفع بدل الإيجار ومبلغ التأمين قبل تاريخ بدء عقد الإيجار، وحالما يتم استيفاء كل المبالغ المستحقة، يكون من حق المستأجر حيازة العقار طوال مدة عقد الإيجار بشرط أنلا يخالف المستأجر أية التزامات في هذا العقد حتى تاريخ انتهاء عقدالإيجار.</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p class="lead"><strong>1.2</strong> The Tenant shall be responsible to pay in full the electricity charges, water charges, utility charges and diesel sharing costs throughout the Tenancy Term. The diesel sharing costs shall be determined by the AKC Management Diesel Expenditure Reports. The diesel sharing costs shall be paid monthly.</p>
+                                                </td>
+                                                <td>
+                                                    <p class="lead" style="text-align: right;direction:rtl;"><strong>1.2</strong>يتحمل المستأجر المسؤولية كاملةً عن سداد كافة فواتيرالاستهلاك كاملة، ويشمل ذلك الكهرباء ورسوم المياه ورسوم المرافق وتكاليف مشاركة استهلاك الديزل طوال مدة الإيجار. يتم تحديد تكاليف تقاسم الديزل من خلال تقارير نفقات إدارة الديزل.، يتم دفع تكاليف تقاسم الديزل شهريًا.</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p class="lead"><strong>1.3</strong> The Tenant shall strictly observe and comply with the AKC Community Rules And Regulations.</p>
+                                                </td>
+                                                <td>
+                                                    <p class="lead" style="text-align: right;direction:rtl;"><strong>1.3</strong> يلتزم المستأجر بأن يراعي تماماً قواعد ولوائح المجمع وأن يتقيد بها.</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p class="lead"><strong>1.4</strong> The Tenant shall maintain and keep the Property clean, safe, hygienic and shall not permit any works to be undertaken at the Property which may be or become a nuisance, annoyance or in any way interfere with the peace and comfort of other residents.</p>
+                                                </td>
+                                                <td>
+                                                    <p class="lead" style="text-align: right;direction:rtl;"><strong>1.4</strong> يلتزم المستأجر بأن يحافظ على العقار ويبقيه نظيفاً وآمناً وصحيِّاً، ولا يجوز له أن يسمح بتنفيذ أية أعمال في العقار من الممكن أن تكون مصدر مضايقة أو إزعاج لغيره من السكان، أو تصبح كذلك، أو تقلق راحة أي منهم</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p class="lead"><strong>1.5</strong> The Tenant agrees to return the Property in the same condition it has received from the Landlord. In the event that the Tenant fails to do so to the satisfaction of the Landlord, the Landlord shall utilize the Security Deposit to rectify any loss, damage or expense incurred in the restoration of the Property.</p>
+                                                </td>
+                                                <td>
+                                                    <p class="lead" style="text-align: right;direction:rtl;"><strong>1.5</strong>يوافق المستأجر على أن يعيد العقار إلى الحالة التي كان عليها عندما تسلَّمه من المؤجر. وفي حال أخفق المستأجر بالقيام بذلك وعلى نحو ينال رضا المؤجر، يستخدم المؤجر مبلغ التأمين لاسترداد أية خسائر أو تعويضات أو مصاريف تكبدها في سبيل إعادة العقار إلى الحالة التي كانعليها سابقاً.</p>
+                                                </td>
+                                            </tr>
+                                             <tr>
+                                                <td>
+                                                    <p class="lead"><strong>1.6</strong> The Tenant shall keep the Property and all fixtures and fittings therein in good working condition. Any damage caused to any part of the Property for any reason whatsoever, the Tenant shall repair at its own cost under the Landlord’s supervision or pay the Landlord without delay the cost to repair the damage if the Landlord undertakes the repair works associated with the damage.</p>
+                                                </td>
+                                                <td>
+                                                    <p class="lead" style="text-align: right;direction:rtl;"><strong>1.6</strong>  ينبغي على المستأجر أن يحافظ على العقار وكافة التجهيزات والمعدات
+                                                    الموجودة فيه بحالة جيدة وصالحة للاستعمال، وإذ الحق ضررٌ ما بأي
+                                                    جزء من العقار لسبب ما، يلتزم المستأجر بأن يقوم بالإصلاحات اللازمة
+                                                    على حسابه الخاص تحت إشراف الادارة، أو أن يدفع للمؤجر دون أي
+                                                    تأخير مصاريف الإصلاحات المتعلقة بمعالجة تلك الأضرار فيما ولأخذ
+                                                    المؤجر على عاتقه تنفيذ الإصلاحات المتعلقة بالأضرار.</p>
+                                                </td>
+                                            </tr>
+                                             <tr>
+                                                <td>
+                                                    <p class="lead"><strong>1.7</strong> The Tenant shall not reassign, transfer or sublet the whole or any part of the Property to any third party other than the Tenant. If the Tenant breaches this clause, the Landlord shall have the absolute right to terminate the Contract and evict the occupier or any third party from the Property immediately at the Tenant's cost and expense.</p>
+                                                </td>
+                                                <td>
+                                                    <p class="lead" style="text-align: right;direction:rtl;"><strong>1.7</strong> لا يجوز للمستأجر التنازل عن ايجار العقار ، أو تحويله أو تأجيره من الباطن بصورة كلية أو جزئية إلى أي طرف ثالث غير المستأجر. وإذا خالف المستأجر أحكام هذه الفقرة، عندئذ يكون للمؤجر الحق المطلق في إنهاء عقد الإيجار وإخلاء الشاغل أو أي طرف ثالث من العقار على الفور على حساب ونفقة ومسؤولية المستأجر.</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p class="lead"><strong>1.8</strong> The Tenant shall not carry out any improvements or alterations to the Property without the prior written approval of the Landlord or its Agent. Upon the expiration or termination of the Contract, improvements or alterations to the Property consented to by the Landlord shall become the Landlord's property, without any payment or compensation to the Tenant. The Landlord reserves the right to request the Tenant to reinstate the Property to its original condition at the Tenant's own cost, expense and responsibility. </p>
+                                                </td>
+                                                <td>
+                                                    <p class="lead" style="text-align: right;direction:rtl;"><strong>1.8</strong> لا يجوز للمستأجر إحداث أية تحسينات أو تبديلات على العقار دون موافقة خطية مسبقة من المؤجر أو وكيله. وعند انتهاء أو إنهاء العقد ، تؤول ملكية التحسينات أو التبديلات التي يشهدها العقار وأقرها المؤجر إلى الأخير دون دفع أي مقابل أو تعويض عنها للمستأجر. هذا ويحتفظ المؤجر بحقه في مطالبة المستأجر بإعادة العقار إلى حالته السابقة مثلما كان على حساب ونفقة ومسؤولية المستأجر. </p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p class="lead"><strong>1.9</strong> The Tenant shall not use the Property for any illegal, unlawful or immoral purposes. </p>
+                                                </td>
+                                                <td>
+                                                    <p class="lead" style="text-align: right;direction:rtl;"> <strong>1.9</strong> لا يجوز للمستأجر أن يستخدم العقار لأية أغراض مخالفة للقانون أو غير قانونية أو منافية للأخلاق</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p class="lead"><strong>1.10</strong> Should the Tenant vacate or abandon the Property without having paid the due Rent or without first notifying the Landlord as per the terms of this Contract, the Landlord shall have the absolute right to open and access the Property, retain as part of compensation the Security Deposit and the remaining balance of the Rent paid by the Tenant towards any damages, losses, cost or expenses suffered or incurred by the Landlord as a result of vacating or abandoning the Property. The Landlord reserves the right to seek further monetary compensation in the competent courts of Sudan for any damages, losses, cost or expenses suffered or incurred by the Landlord. </p>
+                                                </td>
+                                                <td>
+                                                    <p class="lead" style="text-align: right;direction:rtl;"><strong>1.10</strong> إذا أخلى المستأجر العقار أو تركه دون أن يسدد بدل الإيجار المستحق أو دون أن يبلغ المؤجر أو وكيله وفقاً لأحكام العقد ، يكون للمؤجر الحق المطلق في فتح ودخول العقار مع احتجاز مبلغ التأمين والمبلغ المتبقي من بدل الإيجار المدفوع من جانب المستأجر كجزء من التعويض لتغطية أية أضرار أو خسائر أو تكاليف أو مصاريف تترتب على المؤجر أو يتكبدها نتيجة لإخلاء أو ترك العقار. علاوةً على ذلك، يحتفظ المؤجر بحقه في المطالبة بتعويضات مالية إضافية لدى المحاكم المختصة في جمهورية السودان عن أية أضرار أو خسائر أو تكاليف أو مصاريف تترتب على المؤجر أو يتكبدها </p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p class="lead"><strong>1.11</strong> In the event that the Tenant does not wish to renew the Contract, the Tenant shall give a written notice of keep two (2) months prior to the Tenancy Expiry Date to notify the Landlord of the Tenant’s intention not to renew the Contract. Should the Tenant fail to provide the required notice, the Contract shall be automatically renewed for the same Period of Tenancy Agreement and on the same Terms and Conditions. </p>
+                                                </td>
+                                                <td>
+                                                    <p class="lead" style="text-align: right;direction:rtl;"><strong>1.11</strong>	في حالة عدم رغبة المستأجر في تجديد العقد، يلتزم المستأجر بأن يقدم إشعاراً خطياً لمدة شهرين اثنين (2) قبل حلول تاريخ انتهاء عقد الإيجار كي يبلغ المؤجر أو وكيله خطياً بأنه لا يعتزم تجديد العقد. وإذا أخفق المستأجر بتقديم الإشعار المذكور، يعتبر العقد مجددا تلقائياً لنفس مدة عقد الإيجار وبنفس الشروط والأحكام.</p>
+                                                </td>
+                                            </tr>
+                                           <tr>
+                                                <td>
+                                                    <p class="lead"><strong>1.12</strong> Prior to the release of the Security Deposit, Property inspection shall be carried out by the Landlord. Any repairs or damages, except normal acceptable wear and tear, shall be deducted from the Security Deposit. The Tenant agrees that any repairs or maintenance works carried out by the Landlord which is required to restore the Property to its original condition and which exceed more than fourteen (14) days will entitle the Landlord to deduct the excess days from the Security Deposit. In the event that the cost of repair to the damage exceeds the value of the Security Deposit, all additional monies required should be paid in full to the Landlord. The Tenant shall remain liable for such amount until paid. </p>
+                                                </td>
+                                                <td>
+                                                    <p class="lead" style="text-align: right;direction:rtl;"><strong>1.12</strong>	قبل الإفراج عن مبلغ التأمين، سوف يقوم المؤجر أو ممثلوه المعتمدون بإجراء معاينة للعقار، وستُخصم تكاليف أية إصلاحات أو أضرار، باستثناء مظاهر التلف والإهلاك المقبولة، من مبلغ التأمين.يوافق المستأجر على أن أي إصلاحات أو أعمال صيانة مطلوبة لإعادة العقار إلى حالته الأصلية التي قام بها المؤجر أو وكيله والتي تتجاوز أكثر من خمسة (14) أيام ، يتم خصم الأيام الزائدة من مبلغ التأمين عن طريق المؤجر وإذا تجاوزت تكلفة معالجة الأضرار قيمة مبلغ التأمين، عندئذ يجب على المستاجربتُسديد كافة المبالغ الإضافية المستحقة للمؤجر لتغطية فقدان الأضرار بالكامل. يبقى المستأجر مسؤولاً عن هذا المبلغ حتى يتم سداده.</p>
+                                                </td>
+                                           </tr>
+                                           <tr>
+                                                <td>
+                                                    <p class="lead"><strong>1.13</strong> The Contract shall be governed and constructed in accordance with the Laws of Sudan. </p>
+                                                </td>
+                                                <td>
+                                                    <p class="lead" style="text-align: right;direction:rtl;"><strong>1.13</strong>	يخضع العقد إلى القوانين المعمول بها في جمهورية السودان والمطبقة، ويُرجع في تفسيره إلى القوانين ذاتها</p>
+                                                </td>
+                                           </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row" style="margin-top:200px;">
+                                <table class="table table-borderd">
+                                    <tbody>
+                                         <tr class="text-center" style="background-color:#c99b38;font-style:bold;">
+                                             <td>
+                                                 <p>ARTICLE 2</p>
+                                             </td>
+                                             <td>
+                                                 <p>المادة 2</p>
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p class="lead"><strong>2.1</strong> The Tenant and Landlord agreeto apply the same terms of this contract for residential tenancy renewal: however, it is agreed that a seven percent (7%) increase of the initial rent.</p>
+                                            </td>
+                                            <td>
+                                                <p class="lead" style="text-align: right;direction:rtl;"><strong>2.1</strong>	يؤكد المؤجر والمستأجر بأن يتم تطبيق كافة الشروطواحكام العقد في حالة تجديد العقد:وانهما متفقان على زيادة قيمة الإيجار بنسبة %7.</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p class="lead"><strong>2.2</strong> In the event that any Rent instalment is delayed and/or not paid on the due date, the Tenant shall pay to the Landlord damages for late payment on such unpaid instalment at the rate of 2% per month on the due amount calculated from the date such Rent instalment was due until the Rent instalment is received cash into the Landlord’s account. </p>
+                                            </td>
+                                            <td>
+                                                <p class="lead" style="text-align: right;direction:rtl;"><strong>2.2</strong>  في حال التأخر في سداد أي قسط إيجار و/أو التخلف عن سداده في تاريخ الاستحقاق، يجب على المستأجر أن يدفع للمؤجر تعويضات عن التأخر في سداد قسط الإيجار المستحق بمعدل 2% شهرياً على المبلغ المستحق محسوبةً اعتباراً من تاريخ استحقاق قسط الإيجار للدفع ولغاية استلام قيمة قسط الإيجار كاش او في حساب المؤجــــر</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p class="lead"><strong>2.3</strong> The Tenant must return all keys and building and parking access card at the time of leaving the Property. If any of the keys, key cylinder, or access cards are lost or damaged, these will be replaced at the Tenant’s cost or deducted from the Security Deposit.</p>
+                                            </td>
+                                            <td>
+                                                <p class="lead" style="text-align: right;direction:rtl;"><strong>2.3</strong> يكون لزاماً على المستأجر أن يعيد كافة المفاتيح وبطاقات الدخول وقت مغادرة العقار، وفي حال فقدان أو تلف أي من المفاتيح أو أسطوانات المفاتيح أو بطاقات الدخول، يُستبدل أي مما سبق على نفقة المستأجر.</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p class="lead"><strong>2.4</strong>  In the event that Tenant is in breach of the terms of this Tenancy Contract, the Tenant shall be notified of such breach and the Tenant shall have seven (7) days upon receipt of a written notice from the Landlord or its Agent to rectify its breach.</p>
+                                            </td>
+                                            <td>
+                                                <p class="lead" style="text-align: right;direction:rtl;"><strong>2.4</strong> إذا أخلَّ المستأجر بأحكام هذا العقد، يتم إبلاغ المستأجر بذلك الإخلال، ويكون أمامه سبعة (7) أيام من تاريخ استلام أي إشعار خطي من المؤجر أو الوكيل لتدارك الإخلال الذي وقع من جانبه.</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p class="lead"><strong>2.5</strong> This Contract is irrevocable.</p>
+                                            </td>
+                                            <td>
+                                                <p class="lead" style="text-align: right;direction:rtl;"><strong>2.5</strong>	يتسم العقد هذا بأنه غير قابل للإلغاء. </p>
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center" style="background-color:#c99b38;font-style:bold;">
+                                             <td>
+                                                 <p>ARTICLE 3</p>
+                                             </td>
+                                             <td>
+                                                 <p>المادة 3</p>
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p class="lead"><strong>A.1</strong> The Landlord is bound and liable to cover any expenses, value added tax, legal costs of the property, and provide the following:</p>
+                                            </td>
+                                            <td>
+                                                <p class="lead" style="text-align: right;direction:rtl;"><strong>3.1</strong> يلتزم المؤجر بتغطية كل النفقات و ضربية القيمة المضافة و كافة التكاليف القانونية الخاصة بالعقار كما يلتزم المؤجر بالاتي: </p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p class="lead"><strong>A)</strong> The Landlord is obliged under this Contract given that the tenant pays the rent in the manner aforesaid and performs his obligation under this lease shall peacefully hold the said premises without any disturbance or interruption by the landlord or any person claiming under him/ AKC management.</p>
+                                            </td>
+                                            <td>
+                                                <p class="lead" style="text-align: right;direction:rtl;"><strong>أ)</strong> يلتزم المؤجر (او اي شخص من طرفه) بعدم ازعاج المسأجر في استمتاعه بالعين المؤجرة بكل راحة بال شريطة قيام المستأجر بدفع الاجرة حسب الوارد اعلاه وان يفي بالتزاماته بموجب هذا العقد. </p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p class="lead"><strong>B)</strong> Provide Standby Generators that are in good working condition.</p>
+                                            </td>
+                                            <td>
+                                                <p class="lead" style="text-align: right;direction:rtl;"><strong>ب)</strong>  يلتزم المؤجر بتوفي مولدات كهربائية احتياطية وتعمل بحالة جيدة.</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p class="lead"><strong>C)</strong> The Landlord shall conduct any minor maintenance free of charge, including but is not limited to, all consumables such as light bulbs and minor fixings. Any major maintenance cost exceeding $100 per instance shall be subject to prior approval and normally paid by the Landlord. </p>
+                                            </td>
+                                            <td>
+                                                <p class="lead" style="text-align: right;direction:rtl;"><strong>ت)</strong> يتعين على المالك القيام بالصيانات الصغيرة مجانا شاملا (ولكن ليس قاصرا على) المستهلكات مثل المصابيح الكهربائية و التركيبات الطفيفط، اي صيانات تتجاوز قيمتها مائة دولار تخضع للموافقة المسبقة ويدفع تكلفتها المالك.</p>
+                                            </td>
+                                        </tr>
+                                         <tr>
+                                            <td>
+                                                <p class="lead"><strong>D)</strong> The Landlord shall produce, manage and share the diesel sharing cost report with the Tenant. </p>
+                                            </td>
+                                            <td>
+                                                <p class="lead" style="text-align: right;direction:rtl;"><strong>ث)</strong> يقوم المالك بإنتاج وإدارة ومشاركة تقرير تكلفة تقاسم الديزل مع المستأجر.</p>
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center" style="background-color:#c99b38;font-style:bold;">
+                                             <td>
+                                                 <p>Tenant</p>
+                                                 <p>المستأجـــــر</p>
+                                             </td>
+                                             <td>
+                                                 <p>Landlord</p>
+                                                 <p>المؤجــــر</p>
+                                             </td>
+                                        </tr>
+                                        <tr style="font-style:bold;">
+                                             <td>
+                                                 <p>Name:</p>
+                                                 <p>الإسم:</p>
+                                             </td>
+                                             <td>
+                                                 <p>Name:</p>
+                                                 <p>الإسم:</p>
+                                             </td>
+                                        </tr>
+                                        <tr style="font-style:bold;">
+                                             <td>
+                                                 <p>Signature:</p>
+                                                 <p>التوقيع:</p>
+                                             </td>
+                                             <td>
+                                                 <p>Signature:</p>
+                                                 <p>التوقيع:</p>
+                                             </td>
+                                        </tr>
+                                        <tr class="text-center" style="background-color:#c99b38;font-style:bold;">
+                                             <td>
+                                                 <p>Witness</p>
+                                             </td>
+                                             <td>
+                                                 <p>الشهود</p>
+                                             </td>
+                                        </tr>
+                                        <tr style="font-style:bold;">
+                                             <td>
+                                                 <p>Name:</p>
+                                                 <p>الإسم:</p>
+                                             </td>
+                                             <td>
+                                                 <p>Name:</p>
+                                                 <p>الإسم:</p>
+                                             </td>
+                                        </tr>
+                                        <tr style="font-style:bold;">
+                                             <td>
+                                                 <p>Signature:</p>
+                                                 <p>التوقيع:</p>
+                                             </td>
+                                             <td>
+                                                 <p>Signature:</p>
+                                                 <p>التوقيع:</p>
+                                             </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- <div class="row text-center" style="background-color:#c99b38; margin-top:70px; color:#fff;">
+                                <h4 class="test-center">Facility &amp; Services</h4>
+                            </div>
+                            <div class="row" style="margin-top:50px;">
+                                <div class="col">
+                                    <ul class="list-group">
+                                        <t t-foreach="doc.facility_ids" t-as="l">
+                                        <li class="list-group-item"><span t-field="l.name"/></li>
+                                        </t>
+                                    </ul>
+                                 </div>
+                            </div> -->
+                                <!-- <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                          <th scope="col">Service Name</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="doc.facility_ids" t-as="l">
+                                            <tr>
+                                            <td><span t-field="l.name"/></td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table> -->
+                                    
+                                
+
+                            
+                        </div> <!--End Page Tag-->
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

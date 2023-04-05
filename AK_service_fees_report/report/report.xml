@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <report
+            id="ak_service_fees_report"
+            model="account.move.line"
+            string="AK Service Fees"
+            report_type="qweb-pdf"
+            name="AK_service_fees_report.Ak_service_fees_template"
+            file="AK_service_fees_report.Ak_service_fees_template"
+        />
+    </data>
+</odoo>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Sequences for Custody -->
+        <record id="seq_imprest" model="ir.sequence">
+            <field name="name">imprest</field>
+            <field name="code">imprest.imprest</field>
+            <field name="prefix">IMP-</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

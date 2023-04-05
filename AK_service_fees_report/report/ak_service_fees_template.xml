@@ -1,0 +1,101 @@
+<odoo>
+    <template id="Ak_service_fees_template">
+      <t t-call="web.html_container">
+                 <t t-call="web.external_layout">
+                        <div class="page">
+                        <div class="oe_structure"/>
+                        <h2>AK Service Fees Report</h2>
+                        <div class = "raw">
+
+                            <div class="col-2" style="display: inline-block;">
+                                <strong>Start Date:</strong>
+                                <p t-esc="data['start_date']"/>                         
+                            </div>
+                            <div class="col-2" style="display: inline-block;">
+                                <strong>End Date:</strong>
+                                <p t-esc="data['end_date']"/>  
+                            </div>
+
+                        </div>
+                        
+
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align: left;">Expense Category</th>
+                                        <th style="text-align: left;">Actual Expenses</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+            
+                                    <tr>
+                                        <td> <strong>Adminstrative Costs</strong> </td>
+                                        <td><strong><span t-esc="sf['total_adminstrative_cost']"></span></strong></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td> <strong>Power Supply And Generators</strong> </td>
+                                        <td><strong><span t-esc="sf['total_power_supply_generator']"></span></strong></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td> <strong>ACS Maintenance</strong> </td>
+                                        <td><strong><span t-esc="sf['total_acs_maintenance']"></span></strong></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td> <strong>Plumbing Works</strong> </td>
+                                        <td><strong><span t-esc="sf['total_plumbing_works']"></span></strong></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td> <strong>Security</strong> </td>
+                                        <td><strong><span t-esc="sf['total_security']"></span></strong></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td> <strong>Gardening</strong> </td>
+                                        <td><strong><span t-esc="sf['total_gardening']"></span></strong></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td> <strong>Cleaning</strong> </td>
+                                        <td><strong><span t-esc="sf['total_cleaning']"></span></strong></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td> <strong>Replacement And Renewal</strong> </td>
+                                        <td><strong><span t-esc="sf['total_replacement_renewal']"></span></strong></td>
+                                    </tr>  
+
+                                    <tr>
+                                        <td> <h4>TOTALS</h4> </td>
+                                        <td><h4><span t-esc="sf['total_of_total']"></span></h4></td>
+                                    </tr>  
+
+                                </tbody>
+                            </table>
+
+
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align: left;">Expense Category</th>
+                                        <th style="text-align: left;">Actual Expenses</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td> <strong>Service Cost</strong> </td>
+                                        <td><strong><span t-esc="sf['total_service_cost']"></span></strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                    </div>
+                 </t>
+             </t>
+         </template>
+</odoo>
+
+

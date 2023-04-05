@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="pp_res_form" model="ir.ui.view">
+            <field name="name">property.book</field>
+            <field name="model">property.book</field>
+            <field name="inherit_id" ref="property_rental_mgt_app.property_book_wizard" />
+            <field name="arch" type="xml">
+               <xpath expr="//field[@name='owner_id']" position="after">
+                   <field name="avg"/>
+                   <field name="total_administrative_fees" attrs="{'invisible':[('contract_month','=',0)]}"/>
+                   <field name="warranty"/>
+                   <field name="club_fees"/>
+                   <field name="diesel_fees"/>
+               </xpath>
+            </field>
+        </record>
+    </data>
+    
+</odoo>

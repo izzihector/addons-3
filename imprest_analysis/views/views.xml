@@ -1,0 +1,166 @@
+<odoo>
+  <data>
+
+      <!--tree view-->
+    <record model="ir.ui.view" id="imprest_analysis.list">
+      <field name="name">imprest_analysis list</field>
+      <field name="model">imprest.analysis</field>
+      <field name="arch" type="xml">
+        <tree string="Imprest Analysis">
+          <field name="name" optional="show"/>
+          <field name="description" optional="hide"/>
+          <field name="employee_id" optional="show"/>
+          <field name="journal_id" optional="show"/>
+          <field name="date"  optional="show"/>
+          <field name="state"  optional="show"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="imprest_analysis.form" model="ir.ui.view">
+        <field name="name">imprest_analysis form</field>
+        <field name="model">imprest.analysis</field>
+        <field name="arch" type="xml">
+            <form string="Imprest">
+                  <header>
+                      <button name="button_submit"  type="object" states="draft" class="btn-primary" string="Submit" groups="imprest_analysis.group_imprest_user"/>
+
+                      <button name="confirm" type="object" states="submitted" class="btn-primary" string="Confirm" groups="imprest_analysis.group_imprest_manager"/>
+                      <button name="reject"  type="object" states="submitted" string="Reject" groups="imprest_analysis.group_imprest_manager"/>
+
+                      <button name="post" type="object" states="confirm" class="btn-primary" string="Create Entry" groups="account.group_account_user,account.group_account_manager"/>
+
+                      <button name="button_set_Draft" type="object" states="reject" string="Set To Draft" groups="account.group_account_manager"/>
+
+                      <field name="state"  widget="statusbar" statusbar_visible="draft,confirm"/>
+                  </header>
+
+                  <sheet>
+                      <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" name="button_journal" states="post" string="Journal Entry" type="object"  icon="fa-usd"/>
+                      </div>
+                      <h1 class="oe_title">
+                          Number :
+                          <field name="name" readonly="1" class="oe_inline"/>
+                      </h1>
+                      <group col="1">
+                                <group>
+                                    <field name="description" attrs="{'readonly': [('state', 'in', ['post'])]}"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="date" required="1" attrs="{'readonly': [('state', 'in', ['post'])]}"/>
+                                        <field name="employee_id"  attrs="{'readonly': [('state', 'in', ['post'])]}" options="{'no_quick_create': True, 'no_create_edit' : True}"/>
+                                        <field name="journal_id"  attrs="{'readonly': [('state', 'in', ['post'])]}" required="1" options="{'no_quick_create': True, 'no_create_edit' : True}"/>
+                                        <field name="company_id" readonly="1" />
+                                        <field name="move_id" readonly="1" attrs="{'invisible': [('state', 'not in', ['post'])]}"/>
+                                    </group>
+                                </group>
+
+                      </group>
+                      <notebook>
+                            <page string="Items" name="items">
+                                <field name="line_ids">
+                                    <tree string="Items Lines" editable="bottom">
+
+                                        <field name="type" optional="hide"/>
+                                        <field name="date" optional="show"/>
+                                        <field name="name" widget="section_and_note_text" optional="show"/>
+                                        <field name="partner_id" optional="hide"/>
+                                        <field name="beneficiary" optional="hide"/>
+                                        <field name="price_unit" />
+                                        <field name="taxes_id" widget="many2many_tags" domain="[('type_tax_use','=','purchase'), ('company_id', '=', parent.company_id)]" context="{'default_type_tax_use': 'purchase', 'search_view_ref': 'account.account_tax_view_search'}" options="{'no_create': True}" optional="show"/>
+                                        <field name="price_tax" optional="hide"/>
+                                        <field name="company_id" invisible="1"/>
+                                        <field name="account_id" optional="show"  domain="['|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"/>
+                                        <field name="analytic_id" optional="hide"   domain="['|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"/>
+                                        <!--<field name="price_subtotal" widget="monetary" optional="hide"/>-->
+                                    </tree>
+
+                                </field>
+                                <group class="oe_subtotal_footer oe_right">
+                                    <field name="amount_untaxed" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                    <field name="amount_tax" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                    <div class="oe_subtotal_footer_separator oe_inline">
+                                        <label for="amount_total"/>
+                                    </div>
+                                    <field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                </group>
+                            </page>
+                      </notebook>
+
+                  </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="imprest_analysis_filter" model="ir.ui.view">
+            <field name="name">imprest,analysis.search</field>
+            <field name="model">imprest.analysis</field>
+            <field name="arch" type="xml">
+                <search string="Search Leads">
+                    <field name="name" string="Number" filter_domain="[('name', 'ilike', self)]"/>
+                    <field name="employee_id" string="Employee" filter_domain="[('employee_id', 'ilike', self)]"/>
+                    <separator />
+
+                    <filter string="Confirmed" name="imprest_confirmed"
+                            domain="[('state', '=', 'confirm')]"/>
+                    <filter string="Posted" name="imprest_posted"
+                            domain="[('state', '=', 'Posted')]"/>
+                    <separator />
+
+                    <group expand="0" string="Group By">
+                        <filter string="Employee" name="employee" context="{'group_by':'employee_id'}"/>
+                        <filter string="Journal" name="journal" context="{'group_by':'journal_id'}"/>
+                        <filter string="Date" name="date_closed" context="{'group_by':'date'}"/>
+                    </group>
+                </search>
+            </field>
+    </record>
+
+
+    <record id="action_imprest_analysis_request" model="ir.actions.act_window">
+            <field name="name">Imprest/Custody</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">imprest.analysis</field>
+            <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_imprest_analysis_to_approve" model="ir.actions.act_window">
+            <field name="name">Imprest/Custody To Approve</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">imprest.analysis</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[ ('state','not in', ['draft']) ]</field>
+    </record>
+
+
+    <!-- Top menu item -->
+
+    <menuitem id="imprest_analysis.menu_root"
+              name="Imprest/Custody Analysis"
+              groups="imprest_analysis.group_imprest_user"
+              web_icon="imprest_analysis,static/description/icon.png"/>
+
+    <!-- menu categories -->
+
+    <menuitem id="imprest_analysis_request"
+              action="action_imprest_analysis_request"
+              name="Imprest Analysis Request"
+              parent="imprest_analysis.menu_root"
+              groups="imprest_analysis.group_imprest_user,imprest_analysis.group_imprest_manager"/>
+
+    <menuitem id="imprest_analysis_to_approve"
+              action="action_imprest_analysis_to_approve"
+              name="Imprest Analysis To Approve"
+              parent="imprest_analysis.menu_root"
+              groups="imprest_analysis.group_imprest_manager"/>
+
+
+  </data>
+</odoo>

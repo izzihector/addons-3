@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <report        
+            id="property_maintenance_report"
+			model="property.maintanance"
+			string="Property Maintenance Report"
+			report_type="qweb-pdf"
+			name="ak_property_management.property_maintenance_template"
+			file="ak_property_management.property_maintenance_template"
+		/>
+
+		<report        
+            id="ak_invoice_report"
+			model="account.move"
+			string="AKC Invoice"
+			report_type="qweb-pdf"
+			name="ak_property_management.ak_invoice_template"
+			file="ak_property_management.ak_invoice_template"
+		/>
+    </data>
+</odoo>
